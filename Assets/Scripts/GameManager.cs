@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject menuPanel;
     [SerializeField] GameObject gameoverPanel;
+    [SerializeField] GameObject colorsPanel;
     [SerializeField] Snake snakeScript;
+    [SerializeField] ButtonStateHandler buttonStateHandler;
 
     [Header("Texts")]
     [SerializeField] TextMeshProUGUI gameOver_scoreText;
@@ -33,6 +35,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        // This was for testing color options. They unlocked according to score.
+        // PlayerPrefs.SetInt("Score", 0);
     }
 
     public void StartGame()
@@ -74,6 +78,17 @@ public class GameManager : MonoBehaviour
         soundButton.SetActive(false);
         snakeScript.ResetState(false);
         UpdateScore();
+    }
+
+    public void ColorsPanel()
+    {
+        colorsPanel.SetActive(!colorsPanel.activeSelf);
+        if (colorsPanel.activeSelf)
+        {
+            //Debug.Log("Highest score: " + PlayerPrefs.GetInt("Score"));
+            buttonStateHandler.CheckScore(PlayerPrefs.GetInt("Score"));
+            buttonStateHandler.SetObjectsAlpha();
+        }
     }
 
     public void QuitGame()

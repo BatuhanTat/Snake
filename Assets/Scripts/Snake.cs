@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Snake : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Snake : MonoBehaviour
     [SerializeField] GameObject segmentsContainer;
     [SerializeField] Sprite head_alive;
     [SerializeField] Sprite head_dead;
+    [SerializeField] Image defaultSegmentColor;
 
     private SnakeSegment head;
     private Vector2 _swipeStartPos;
@@ -24,6 +26,7 @@ public class Snake : MonoBehaviour
     private void Awake()
     {
         head = GetComponent<SnakeSegment>();
+        segmentPrefab.GetComponent<SpriteRenderer>().color = defaultSegmentColor.color;
 
         if (head == null)
         {

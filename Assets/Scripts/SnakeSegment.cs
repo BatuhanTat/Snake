@@ -13,6 +13,7 @@ public class SnakeSegment : MonoBehaviour
     public Sprite body;
     public Sprite corner;
 
+
     public Vector2 direction { get; private set; }
 
     private void Awake()
