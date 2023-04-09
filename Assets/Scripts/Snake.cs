@@ -86,7 +86,6 @@ public class Snake : MonoBehaviour
                 Vector2 swipeEndPos = touch.position;
                 Vector2 swipeDir = swipeEndPos - _swipeStartPos;
                 swipeDir.Normalize();
-
                 if (Mathf.Abs(swipeDir.x) > Mathf.Abs(swipeDir.y))
                 {
                     // Horizontal swipe
@@ -97,7 +96,7 @@ public class Snake : MonoBehaviour
                     else if (swipeDir.x < 0 && direction != Vector2.right)
                     {
                         direction = Vector2.left;
-                    }
+                    }             
                 }
                 else
                 {
@@ -111,6 +110,7 @@ public class Snake : MonoBehaviour
                         direction = Vector2.down;
                     }
                 }
+                head.SetDirection(direction, Vector2.zero);
             }
         }
     }
