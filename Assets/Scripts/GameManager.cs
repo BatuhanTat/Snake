@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image imageMusicOn;
     [SerializeField] Image imageMusicOff;
 
-
     [HideInInspector] public int score = 0;
+    [SerializeField] private string URL;
 
     private void Awake()
     {
@@ -108,6 +108,11 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.ToggleMusic();
         imageMusicOff.enabled = !imageMusicOff.enabled;
         imageMusicOn.enabled = !imageMusicOn.enabled;
+    }
+
+    public void OnClick_Link()
+    {
+        Application.OpenURL(URL);
     }
 
     private void SetScore()
